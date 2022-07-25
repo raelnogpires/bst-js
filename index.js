@@ -7,7 +7,7 @@ class BinarySearchTree {
   constructor() { this.root = null }
 
   add(data) {
-    // we reference the root/top node.
+    // we reference the root node.
     const node = this.root;
 
     if (!node) {
@@ -23,7 +23,7 @@ class BinarySearchTree {
   }
 
   findMin() {
-    // we reference the top/root node.
+    // we reference the root node.
     let currentNode = this.root;
     // while the current left node isn't null,
     // the current node receives the left node.
@@ -34,13 +34,30 @@ class BinarySearchTree {
   }
 
   findMax() {
-    // we reference the top/root node.
+    // we reference the root node.
     let currentNode = this.root;
     // while the current right node isn't null,
     // the current node receives the right node.
     while (currentNode.right) { currentNode = currentNode.right };
     // at the moment that currentNode.left equals null,
     // we'll return the data of the node.
+    return currentNode.data;
+  }
+
+  find(data) {
+    // we reference the root node.
+    let currentNode = this.root;
+    // while the data of the current node isn't equal to data being searched
+    // we'll search the nodes.
+    while (currentNode.data !== data) {
+      // if the data is 'smaller' than the current node,
+      // we'll search the left side of the node.
+      if (data < currentNode.data) { currentNode = currentNode.left }
+      // otherwise, we'll search the right side.
+      else { currentNode = currentNode.right };
+      // if the data isn't found, we'll return null;
+      if (!currentNode) { return null };
+    }
     return currentNode.data;
   }
 }
