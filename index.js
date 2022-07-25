@@ -21,6 +21,28 @@ class BinarySearchTree {
       return search(node);
     }
   }
+
+  findMin() {
+    // we reference the top/root node.
+    let currentNode = this.root;
+    // while the current left node isn't null,
+    // the current node receives the left node.
+    while (currentNode.left) { currentNode = currentNode.left };
+    // at the moment that currentNode.left equals null,
+    // we'll return the data of the node.
+    return currentNode.data;
+  }
+
+  findMax() {
+    // we reference the top/root node.
+    let currentNode = this.root;
+    // while the current right node isn't null,
+    // the current node receives the right node.
+    while (currentNode.right) { currentNode = currentNode.right };
+    // at the moment that currentNode.left equals null,
+    // we'll return the data of the node.
+    return currentNode.data;
+  }
 }
 
 module.exports = BinarySearchTree;
