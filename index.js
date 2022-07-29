@@ -44,6 +44,7 @@ class BinarySearchTree {
     return currentNode.data;
   }
 
+  // find method will return the node data itself.
   find(data) {
     // we reference the root node.
     let currentNode = this.root;
@@ -59,6 +60,28 @@ class BinarySearchTree {
       if (!currentNode) { return null };
     }
     return currentNode.data;
+  }
+
+  // isPresent method just returns true or false, not the data.
+  isPresent(data) {
+    // we refence the root node.
+    let currentNode = this.root;
+    // while there is a current node (not being null)
+    // we gonna search for the data.
+    while (currentNode) {
+      // in case of the current node data equals the search data, we'll return true.
+      if (data === currentNode.data) return true;
+      // if data is smaller than the current node
+      // the current node will receive the left node.
+      if (data < currentNode.data) {
+        currentNode = currentNode.left;
+      } else {
+        // otherwise (data bigger than current node data), will receive the right node.
+        currentNode = currentNode.right;
+      }
+    }
+    // by default, will return false, unless the data is found.
+    return false;
   }
 }
 
